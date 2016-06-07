@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+
+
+
+<BorderPane   xmlns:fx="http://javafx.com/fxml/1" 
+              
+              fx:id="root" prefHeight="550.0" prefWidth="650.0" 
+              fx:controller="ru.bmstu.www.view.UserInterfaceController" style="-fx-background-color:gray;">
+    
+    <top>
+        <HBox   spacing="15"  style="-fx-background-color:black;" >  <!--  #336699-->
+            <padding>
+                <javafx.geometry.Insets top="25" right="25" bottom="25" left="95"/>
+            </padding>
+            <Button fx:id="buttonOpen" text="Open" minWidth="130" 
+                    onAction="#clickOpen"  >      
+            </Button>
+            <Button fx:id="buttonStopPlay" text="Stop/Play" minWidth="130"
+                    onAction="#clickStopPlay" > 
+            </Button>
+            <VBox  spacing="5"  >
+                <padding>
+                    <javafx.geometry.Insets  top="5" />
+                </padding>
+                <Slider fx:id="soundSlider" 
+                        max="2.2" min="0.01" value="1.1" rotate="0">    
+                </Slider>
+                <HBox >
+                    <padding>
+                        <javafx.geometry.Insets  left="30"/>
+                    </padding>
+                    <Button fx:id="buttonReset" text="Reset" minWidth="55"  
+                            onAction="#clickReset"  > 
+                    </Button> 
+                </HBox>
+            </VBox>
+            
+            <VBox>
+                <HBox spacing="5" minWidth="80"  >
+                    <padding>
+                        <javafx.geometry.Insets  top="5" left="25"/> 
+                    </padding>
+                    <CheckBox fx:id="echoCheck" onAction="#createEcho" > </CheckBox>
+                    <Label text="Echo" > </Label>
+                </HBox>
+            
+                <VBox>
+                    <padding> 
+                        <javafx.geometry.Insets  top="10" left="5" /> 
+                    </padding>
+                    <Slider fx:id="echoSlider" 
+                                        max="2"  min="0.01" value="1.0" rotate="0" maxWidth="110">    
+                    </Slider>
+                </VBox> 
+              	
+            </VBox>
+            
+            
+            
+            
+            
+            <VBox>
+                <HBox spacing="10" minWidth="80" >
+                    <padding>
+                        <javafx.geometry.Insets  top="5" left="25"/> 
+                    </padding>
+                    <CheckBox fx:id="graphCheck" onAction="#createGraph" > </CheckBox>
+                    <Label text="plot" > </Label>
+                </HBox>
+              	
+            </VBox>
+            
+            
+            
+            
+            
+            <VBox>
+                <padding> 
+                    <javafx.geometry.Insets  left="25" /> 
+                </padding>
+                <HBox spacing="5" minWidth="80">
+                    <padding> 
+                        <javafx.geometry.Insets  top="5"  /> 
+                    </padding>
+                    <CheckBox fx:id="overdriveCheck" onAction="#createOverdrive"> </CheckBox>
+                    <Label text="Overdrive" > </Label>
+                </HBox>
+                <VBox>
+                    <padding> 
+                        <javafx.geometry.Insets  top="10" /> 
+                    </padding>
+                    <Slider fx:id="overdriveSlider" 
+                                max="7"  min="0.01" value="1.0" rotate="0" maxWidth="110">    
+                    </Slider>
+                </VBox>
+            </VBox>
+            
+            <HBox >
+                <padding> 
+                    <javafx.geometry.Insets  left="5" /> 
+                </padding>
+                <Button fx:id="buttonClose" text="Close" minWidth="110"
+                        onAction="#clickClose" > 	
+                </Button>
+            </HBox>
+            
+        </HBox>
+    </top>
+    
+    
+    <center>
+        <GridPane hgap="75">
+            <padding>
+                <javafx.geometry.Insets top="5" right="25" bottom="25" left="50"/>
+            </padding>
+            <VBox   spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                <HBox>
+                    <padding> 
+                        <javafx.geometry.Insets  left="60" /> 
+                    </padding>
+                    <Label text="1.0" fx:id="labelForSlider_0" minWidth="5"> </Label>
+                </HBox>
+                <HBox>
+                    <padding> 
+                        <javafx.geometry.Insets  left="60" /> 
+                    </padding>
+                    <Slider orientation="VERTICAL" max="7" value="1.0" min="0.01" 
+                                fx:id="Slider_0" minHeight="78"> 
+                    </Slider>
+                </HBox>
+                    <HBox> <padding> 
+                        <javafx.geometry.Insets  left="45" /> 
+                    </padding>
+                <Label text="1-450 Hz" > </Label> </HBox>
+            </VBox>
+            <VBox   spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                <HBox>
+                    <padding> 
+                        <javafx.geometry.Insets  left="60" /> 
+                    </padding>
+                    <Label text="1.0" fx:id="labelForSlider_1" minWidth="5"> </Label>
+                </HBox>
+                <HBox>
+                    <padding> 
+                        <javafx.geometry.Insets  left="60" /> 
+                    </padding>
+                    <Slider orientation="VERTICAL" max="7" value="1.0" min="0.01" 
+                                fx:id="Slider_1" minHeight="78"> 
+                    </Slider>
+                </HBox> <HBox> <padding> 
+                        <javafx.geometry.Insets  left="42" /> 
+                    </padding>
+                    <Label  text="0.4-1.2 kHz" > </Label> 
+                </HBox>
+            </VBox>
+            <VBox   spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="2">
+                <HBox>
+                    <padding> 
+                        <javafx.geometry.Insets  left="60" /> 
+                    </padding>
+                    <Label text="1.0" fx:id="labelForSlider_2" minWidth="5"> </Label>
+                </HBox>
+                <HBox>
+                    <padding> 
+                        <javafx.geometry.Insets  left="60" /> 
+                    </padding>
+                    <Slider orientation="VERTICAL" max="7" value="1.0" min="0.01" fx:id="Slider_2"> 
+                    </Slider>
+                </HBox> <HBox> <padding> 
+                        <javafx.geometry.Insets  left="42" /> 
+                    </padding>
+                <Label  text="1.1-2.6 kHz" > </Label> </HBox>
+            </VBox>
+            <VBox   spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="3">
+                <HBox>
+                    <padding> 
+                        <javafx.geometry.Insets  left="60" /> 
+                    </padding>
+                    <Label text="1.0" fx:id="labelForSlider_3" minWidth="5"> </Label>
+                </HBox>
+                <HBox>
+                    <padding> 
+                        <javafx.geometry.Insets  left="60" /> 
+                    </padding>
+                    <Slider orientation="VERTICAL" max="7" value="1.0" min="0.01" 
+                                fx:id="Slider_3" minHeight="78"> 
+                    </Slider>
+                </HBox> <HBox> <padding> 
+                        <javafx.geometry.Insets  left="42" /> 
+                    </padding>
+                    <Label  text="2.4-8.2 kHz" > </Label> 
+                </HBox>
+            </VBox>
+            <VBox   spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="4">
+                <HBox>
+                    <padding> 
+                        <javafx.geometry.Insets  left="60" /> 
+                    </padding>
+                    <Label text="1.0" fx:id="labelForSlider_4" minWidth="5"> </Label>
+                </HBox>
+                <HBox>
+                    <padding> 
+                        <javafx.geometry.Insets  left="60" /> 
+                    </padding>
+                    <Slider orientation="VERTICAL" max="7" value="1.0" min="0.01" 
+                                fx:id="Slider_4" minHeight="78"> 
+                    </Slider>
+                </HBox> <HBox> <padding> 
+                        <javafx.geometry.Insets  left="42" /> 
+                    </padding>
+                    <Label  text="8.0-16.4 kHz" > </Label> 
+                </HBox>
+            </VBox>
+            <VBox   spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="5">
+                <HBox>
+                    <padding> 
+                        <javafx.geometry.Insets  left="60" /> 
+                    </padding>
+                    <Label text="1.0" fx:id="labelForSlider_5" minWidth="5"> </Label>
+                </HBox>
+                <HBox> 
+                    <padding> 
+                        <javafx.geometry.Insets  left="60" /> 
+                    </padding>
+                    <Slider orientation="VERTICAL" max="7" value="1.0" min="0.01" 
+                                fx:id="Slider_5" minHeight="78"> 
+                    </Slider>
+                </HBox> <HBox> <padding> 
+                        <javafx.geometry.Insets  left="42" /> 
+                    </padding>
+                    <Label  text="16.0-21.0 kHz" > </Label> 
+                </HBox>
+            </VBox>
+             
+         
+        </GridPane>
+    </center>
+    
+    <bottom>
+        <LineChart fx:id="graph" maxHeight="300" >
+            <xAxis>
+                <NumberAxis label="Frequency, 86 * Hz" lowerBound="0" upperBound="20000" fx:id="xAxis" style="-fx-background-color:gray;" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Magnitude" lowerBound="0" upperBound="3" fx:id="yAxis" />
+            </yAxis>
+        </LineChart>
+    </bottom>
+    
+</BorderPane>
+
